@@ -1,0 +1,27 @@
+services:
+  retailops-api:
+    build: .
+    env_file:
+      - .env
+    environment:
+      RETAILOPS_DB_PATH: /app/data/retailops.db
+    ports:
+      - "8080:8080"
+    volumes:
+      - retailops-data:/app/data
+
+  retailops-adk:
+    build: .
+    env_file:
+      - .env
+    environment:
+      RETAILOPS_DB_PATH: /app/data/retailops.db
+      PYTHONUTF8: "1"
+    command: ["adk", "web", "--host", "0.0.0.0", "--port", "8000", "."]
+    ports:
+      - "8000:8000"
+    volumes:
+      - retailops-data:/app/data
+
+volumes:
+  retailops-data:

@@ -1,0 +1,6 @@
+google-adk[mcp]>=1.29.0
+litellm>=1.84
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-dotenv>=1.0
+mcp<2
